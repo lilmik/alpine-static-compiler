@@ -1,0 +1,21 @@
+
+
+# 静态安装支持静态的库（curl、sqlite3、openssl、zlib）
+vcpkg install curl:x64-linux sqlite3:x64-linux openssl:x64-linux zlib:x64-linux asio:x64-linux --triplet x64-linux --feature-flags=static
+
+vcpkg install curl sqlite3 openssl zlib asio --feature-flags=static
+
+# 动态安装不支持静态的库（clamav）
+vcpkg install clamav:x64-linux --triplet x64-linux --feature-flags=dynamic
+
+
+sudo docker run -it --name alpine319-static-compiler-test -v ./app:/app alpine319-static-compiler:1.0
+
+
+apk add perl linux-headers
+
+
+cmake .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_TOOLCHAIN_FILE=/opt/vcpkg/scripts/buildsystems/vcpkg.cmake \
+  -DCMAKE_EXE_LINKER_FLAGS="-static -L/usr/lib/musl -lc -lm"
