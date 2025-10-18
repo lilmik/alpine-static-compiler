@@ -1,0 +1,54 @@
+# 基础Web框架
+fastapi
+uvicorn
+django
+channels
+flask
+tornado
+
+# 网络通信
+websockets
+python-socketio
+paho-mqtt
+requests
+aiohttp
+httpx
+
+# 数据处理与分析
+pandas
+numpy
+matplotlib
+
+# 定时任务与异步
+schedule
+celery
+asyncio
+aiomultiprocess
+
+# 编译与打包工具
+nuitka
+pyinstaller
+setuptools
+wheel
+
+# 图像处理
+opencv-python
+pillow
+imageio
+
+# 网页解析与爬虫
+scrapy
+
+# 文档处理
+openpyxl
+PyPDF2
+pdfplumber
+python-docx
+python-pptx
+
+# 数据库相关
+pymysql
+redis
+
+# 开发工具
+pytest
