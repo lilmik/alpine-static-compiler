@@ -45,7 +45,7 @@ RUN echo "https://mirrors.ustc.edu.cn/alpine/v3.19/main" > /etc/apk/repositories
 # 2. Python相关配置
 # ==============================================
 # Python 编译依赖安装（补全缺失的包主要是opencv编译会缺的内容）
-RUN apk add --no-cache --virtual .build-deps \
+RUN apk add --no-cache \
     # 基础编译工具
     patchelf \
     ccache \
@@ -88,7 +88,7 @@ RUN apk add --no-cache --virtual .build-deps \
     tk-dev \
     tcl-dev \
     harfbuzz-dev \
-    fribidi-dev
+    fribidi-dev 
 
 # Python 包安装（优化编译效率）
 COPY requirements.txt /tmp/
@@ -101,8 +101,7 @@ RUN export MAKEFLAGS="-j$(nproc)" && \
     pip install --no-cache-dir -r /tmp/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # 清理层
-RUN apk del .build-deps && \
-    rm -f /tmp/requirements.txt && \
+RUN rm -f /tmp/requirements.txt && \
     . /opt/venv/bin/activate && \
     pip cache purge && \
     rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
