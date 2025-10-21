@@ -181,7 +181,3 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
 
 # 启动命令
 CMD ["/usr/sbin/sshd", "-D"]
-
-
-
-
